@@ -5,10 +5,11 @@ openai
 pydub
 requests
 flask_cors
-dotenv
+python-dotenv
 whisper
 jinja2
 vertexai
 google-cloud-translate
 transformers
 ffmpeg-python
+gunicorn

@@ -47,6 +47,8 @@ def generate_prompt(text, language):
 
     Generate the content now.
     """
+    print("Prompt:")
+    print(prompt)  # Debugging output
     return prompt
 
 def load_and_fix_json(json_data):

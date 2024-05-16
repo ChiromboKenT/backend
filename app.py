@@ -1,8 +1,8 @@
 
 
 from dotenv import load_dotenv
-from flask import Flask
-from flask_cors import CORS
+from flask import Flask # type: ignore
+from flask_cors import CORS # type: ignore
 from routes import init_routes
 
 load_dotenv()

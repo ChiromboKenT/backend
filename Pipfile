@@ -4,11 +4,20 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+flask = "*"
+transformers = "*"
+langid = "*"
 openai = "*"
-python-dotenv = "*"
-jinja2 = "*"
-imgkit = "*"
+pydub = "*"
+requests = "*"
 flask-cors = "*"
+python-dotenv = "*"
+whisper = "*"
+jinja2 = "*"
+vertexai = "*"
+google-cloud-translate = "*"
+ffmpeg-python = "*"
+gunicorn = "*"
 
 [dev-packages]
 
