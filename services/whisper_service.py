@@ -1,4 +1,4 @@
-import whisper
+import whisper # type: ignore
 
 def transcribe_audio(audio_file_path):
     # Load the Whisper model

@@ -4,6 +4,11 @@ import os
 # Set the environment variable for the Google Cloud credentials
 
 def translate_text(text, src_lang, dest_lang):
+    if not text:
+        return ""
+    if src_lang == dest_lang:
+        return text
+
     translate_client = translate.Client()
 
     # Define language codes for Yoruba and Fon

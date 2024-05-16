@@ -1,13 +1,11 @@
 import os
-from flask import Flask, request,jsonify, send_file #type: ignore
+import tempfile
+from flask import Flask, request, jsonify, send_file # type: ignore
 from services.transformers_service import transcribe_with_language_detection
 from services.translation_service import translate_text
 from services.content_generation_service import generate_content
 from services.image_generation_service import generate_benin_background_image
 from services.poster_generation_service import render_poster
-
-
-
 
 def init_routes(app):
     @app.route('/translate', methods=['POST'])
@@ -77,8 +75,52 @@ def init_routes(app):
         # Return the rendered HTML content
         return poster_html
 
+    @app.route('/generate-full-poster', methods=['POST'])
+    def full_workflow_route():
+        data = request.form
+        text = data.get('text', '')
+        src_lang = data.get('src_lang', 'en')
+        dest_lang = data.get('dest_lang', 'en')
 
+        audio_file = request.files.get('audio')
 
-# Other existing routes...
+        if not text and not audio_file:
+            return jsonify({"error": "No text or audio file provided"}), 400
 
+        translated_text = ''
+        if text:
+            # Translate text
+            translated_text = translate_text(text, src_lang, 'en') or ''
 
+        translated_transcription = ''
+        if audio_file:
+            with tempfile.NamedTemporaryFile(delete=False, suffix=os.path.splitext(audio_file.filename)[1]) as temp_audio:
+                audio_path = temp_audio.name
+                audio_file.save(audio_path)
+
+            # Transcribe and translate audio
+            transcribed_text = transcribe_with_language_detection(audio_path)
+            translated_transcription = translate_text(transcribed_text, src_lang, 'en')
+
+        combined_text = translated_text + " " + translated_transcription if translated_text else translated_transcription
+
+        # Generate content
+        generated_content = generate_content(combined_text, dest_lang)
+
+        # Generate background image
+        background_image_url = generate_benin_background_image()
+
+        if 'error' in generated_content:
+            return jsonify({"error": "Error generating content"}), 500
+        if not background_image_url:
+            return jsonify({"error": "Error generating image"}), 500
+
+        # Prepare poster data
+        poster_data = generated_content['poster']
+        poster_data['background_image'] = background_image_url
+
+        # Render the poster and get the HTML content
+        poster_html = render_poster(poster_data)
+
+        # Return the rendered HTML content
+        return poster_html

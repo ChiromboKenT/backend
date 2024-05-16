@@ -2,10 +2,11 @@ import json
 import re
 import vertexai # type: ignore
 from vertexai.preview.generative_models import GenerativeModel # type: ignore
+import os
 
-PROJECT_ID = "lyrical-medley-419209"
+PROJECT_ID = os.getenv("PROJECT_ID")
 REGION = "us-central1"
-MODEL_NAME = "gemini-1.5-flash-preview-0514"
+MODEL_NAME = os.getenv("CONTENT_GENERATION_MODEL_NAME")
 
 vertexai.init(project=PROJECT_ID, location=REGION)
 
