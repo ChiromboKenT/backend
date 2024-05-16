@@ -123,4 +123,4 @@ def init_routes(app):
         poster_html = render_poster(poster_data)
 
         # Return the rendered HTML content
-        return poster_html
+        return jsonify({"poster_html": poster_html, "social": generated_content['socialMedia']})

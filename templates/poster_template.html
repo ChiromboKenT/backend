@@ -9,7 +9,7 @@
             size: A4;
             margin: 0;
         }
-        body {
+        .bodys {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -63,7 +63,8 @@
     </style>
 </head>
 <body>
-    <div class="overlay">
+    <div class='bodys'>
+        <div class="overlay">
         <div class="title">{{ title }}</div>
         <div class="cta">{{ call_to_action }}</div>
         <div class="slogan">{{ slogan }}</div>
@@ -71,6 +72,7 @@
         <div class="details"><span class="highlight">Date: {{ date }}</span></div>
         <div class="details"><span class="highlight">Time: {{ time }}</span></div>
         <div class="details"><span class="highlight">Contact: {{ contact }}</span></div>
+    </div>
     </div>
 </body>
 </html>

@@ -8,6 +8,7 @@ openai = "*"
 python-dotenv = "*"
 jinja2 = "*"
 imgkit = "*"
+flask-cors = "*"
 
 [dev-packages]
 
