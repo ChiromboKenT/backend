@@ -1,5 +1,11 @@
 from flask import Flask # type: ignore
 from routes import init_routes
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
 
 app = Flask(__name__)
 

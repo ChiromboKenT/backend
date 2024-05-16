@@ -15,3 +15,4 @@ def generate_content(prompt):
 
     response = client.predict(request=request)
     return response.predictions[0]["generated_text"]
+

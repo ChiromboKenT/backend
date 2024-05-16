@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promotional Poster</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-image: url("{{ background_image }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: white;
+        }
+        .slogan {
+            font-size: 28px;
+            margin: 20px 0;
+            color: white;
+            margin-bottom: auto;
+        }
+        .cta {
+            font-size: 36px;
+            margin: 40px 0;
+            color: white;
+        }
+        .details {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #000;
+            position: relative;
+        }
+        .highlight {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="title">{{ title }}</div>
+        <div class="cta">{{ call_to_action }}</div>
+        <div class="slogan">{{ slogan }}</div>
+        <div class="details"><span class="highlight">Venue: {{ venue }}</span></div>
+        <div class="details"><span class="highlight">Date: {{ date }}</span></div>
+        <div class="details"><span class="highlight">Time: {{ time }}</span></div>
+        <div class="details"><span class="highlight">Contact: {{ contact }}</span></div>
+    </div>
+</body>
+</html>
