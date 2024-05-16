@@ -18,6 +18,7 @@ vertexai = "*"
 google-cloud-translate = "*"
 ffmpeg-python = "*"
 gunicorn = "*"
+torch = "*"
 
 [dev-packages]
 
