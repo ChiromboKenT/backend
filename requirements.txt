@@ -11,3 +11,4 @@ jinja2
 vertexai
 google-cloud-translate
 transformers
+ffmpeg-python
