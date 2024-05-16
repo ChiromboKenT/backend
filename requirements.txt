@@ -1,0 +1,13 @@
+flask
+transformers
+langid
+openai
+pydub
+requests
+flask_cors
+dotenv
+whisper
+jinja2
+vertexai
+google-cloud-translate
+transformers
