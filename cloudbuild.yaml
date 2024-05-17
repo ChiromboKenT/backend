@@ -26,13 +26,13 @@ steps:
       '--region', 'us-central1',
       '--allow-unauthenticated',
       '--set-env-vars', 'PROJECT_ID=${PROJECT_ID},CONTENT_GENERATION_MODEL_NAME=${CONTENT_GENERATION_MODEL_NAME}',
-      '--memory', '1g'
+      '--memory', '2GiB'
     ]
 
 # Substitutions
 substitutions:
   PROJECT_ID: 'lyrical-medley-419209'
-  CONTENT_GENERATION_MODEL_NAME: 'gemini-1.5-flash-preview-0514'
+  CONTENT_GENERATION_MODEL_NAME: 'production'
 
 # Timeout for the build (optional)
 timeout: '900s'
