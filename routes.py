@@ -8,6 +8,14 @@ from services.image_generation_service import generate_benin_background_image
 from services.poster_generation_service import render_poster
 
 def init_routes(app):
+    @app.route('/', methods=['GET'])
+    def index():
+        return "Welcome to the AI Content Generation API!"
+
+    @app.route('/health', methods=['GET'])
+    def health():
+        return jsonify({"status": "ok", "message": "Service is healthy"})
+
     @app.route('/translate', methods=['POST'])
     def translate():
         data = request.json

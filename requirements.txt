@@ -13,3 +13,4 @@ google-cloud-translate
 transformers
 ffmpeg-python
 gunicorn
+torch
