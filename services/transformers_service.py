@@ -32,7 +32,6 @@ def transcribe_with_language_detection(audio_file_path):
 
     # Detect the language of the transcribed text
     detected_language = detect_language(general_transcription)
-    print(f"Detected language: {detected_language}")
     # Based on the detected language, use the specific model for transcription
     if detected_language == 'fon':
         return transcribe_fon(audio_file_path)

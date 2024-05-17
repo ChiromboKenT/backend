@@ -47,8 +47,7 @@ def generate_prompt(text, language):
 
     Generate the content now.
     """
-    print("Prompt:")
-    print(prompt)  # Debugging output
+
     return prompt
 
 def load_and_fix_json(json_data):
@@ -80,9 +79,6 @@ def generate_content(text, language):
     generative_model = GenerativeModel(model_name=MODEL_NAME)
     response = generative_model.generate_content([prompt])
 
-    # Print the response for debugging
-    print(response)
-
     # Attempt to extract the generated text from the response
     try:
         generated_text = response.candidates[0].content.parts[0].text
@@ -99,7 +95,6 @@ def generate_content(text, language):
 
     # Fix and validate JSON format
     try:
-        print(generated_text)  # Debugging output
         content = load_and_fix_json(generated_text)
     except ValueError as e:
         print(f"JSON decoding error: {e}")

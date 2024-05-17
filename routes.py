@@ -22,6 +22,10 @@ def init_routes(app):
         text = data.get('text')
         src_lang = data.get('src_lang')
         dest_lang = data.get('dest_lang')
+
+        if not text or not src_lang or not dest_lang:
+            return jsonify({"error": "Missing required fields"}), 400
+
         translated_text = translate_text(text, src_lang, dest_lang)
         return jsonify({"translated_text": translated_text})
 
