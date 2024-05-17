@@ -22,4 +22,4 @@ COPY . .
 EXPOSE 8443
 
 # Command to run the application with Gunicorn and Gevent worker class
-CMD ["gunicorn", "app:app", "--workers", "1", "--worker-class", "gevent", "--bind", "0.0.0.0:8080", "--timeout", "3000"]
+CMD ["gunicorn", "app:app", "--workers", "4", "--worker-class", "gevent", "--bind", "0.0.0.0:8080", "--timeout", "3000"]

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gishta-promotions-backend
+  labels:
+    app: gishta-promotions-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gishta-promotions-backend
+  template:
+    metadata:
+      labels:
+        app: gishta-promotions-backend
+    spec:
+      containers:
+      - name: gishta-promotions-backend
+        image: gcr.io/lyrical-medley-419209/gishta-promotions-backend:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: openai-api-key
+              key: OPENAI_API_KEY
+        - name: PROJECT_ID
+          value: "lyrical-medley-419209"
+        - name: CONTENT_GENERATION_MODEL_NAME
+          value: "gemini-1.5-flash-preview-0514"

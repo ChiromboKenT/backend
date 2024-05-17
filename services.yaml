@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gishta-promotions-backend
+  labels:
+    app: gishta-promotions-backend
+spec:
+  type: LoadBalancer
+  selector:
+    app: gishta-promotions-backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
