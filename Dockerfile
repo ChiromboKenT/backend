@@ -13,13 +13,13 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt gunicorn gevent
 
 # Copy the rest of the application code
 COPY . .
 
 # Expose the port
-EXPOSE 8080
+EXPOSE 8443
 
-# Command to run the application
-CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8080", "app:app"]
+# Command to run the application with Gunicorn and Gevent worker class
+CMD ["gunicorn", "app:app", "--workers", "1", "--worker-class", "gevent", "--bind", "0.0.0.0:8080", "--timeout", "3000"]
