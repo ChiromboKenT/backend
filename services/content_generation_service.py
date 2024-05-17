@@ -7,10 +7,33 @@ import os
 PROJECT_ID = os.getenv("PROJECT_ID")
 REGION = "us-central1"
 MODEL_NAME = os.getenv("CONTENT_GENERATION_MODEL_NAME")
+LANGUAGES = {
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German",
+    "it": "Italian",
+    "pt": "Portuguese",
+    "nl": "Dutch",
+    "ru": "Russian",
+    "ja": "Japanese",
+    "ko": "Korean",
+    "zh": "Chinese",
+    "yo": "Yoruba",
+    "ha": "Hausa",
+    "ig": "Igbo",
+    "fon": "Fon",
+    "sw": "Swahili",
+    "ar": "Arabic",
+    "he": "Hebrew",
+    "hi": "Hindi",
+}
 
 vertexai.init(project=PROJECT_ID, location=REGION)
 
 def generate_prompt(text, language):
+    lang = LANGUAGES.get(language, language)
+
     prompt = f"""
     You are an AI that generates promotional content. Please create the content in the following structure:
 
@@ -40,8 +63,7 @@ def generate_prompt(text, language):
         }}
     }}
 
-    The content should be provided in {language} where possible, otherwise keep it in the query language. The keys should remain as is, and if no information is given, leave it empty. Descriptions should always be generated according to the query as much as possible.
-
+    The content should be provided in {lang} where possible, otherwise keep it in the query language. The keys should remain as is, and if no information is given, leave it empty. Descriptions should always be generated according to the query as much as possible. With the values being generated in {lang}, the content should be engaging and informative.
     Here is the text to base the promotional content on:
     {text}
 
