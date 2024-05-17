@@ -26,7 +26,7 @@ steps:
       '--region', 'us-central1',
       '--allow-unauthenticated',
       '--set-env-vars', 'PROJECT_ID=${PROJECT_ID},CONTENT_GENERATION_MODEL_NAME=${CONTENT_GENERATION_MODEL_NAME}',
-      '--memory', '1Gi'
+      '--memory', '1g'
     ]
 
 # Substitutions
